@@ -1,0 +1,96 @@
+.details-container {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+  max-width: 980px;
+  width: 100%;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+}
+.image {
+  width: 100%;
+}
+
+.product-details-modal .MuiPaper-root {
+  overflow-y: unset;
+  max-width: unset;
+}
+
+.name-and-subtext span {
+  padding-top: 0;
+  font-size: 15px;
+  color: #888;
+}
+
+.taka-icon-in-product-details {
+  width: 20px;
+  margin: 5px -2px -3px 0px;
+}
+
+.price-in-product-details {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.details {
+  width: 100%;
+  padding-left: 20px;
+}
+
+.price-container {
+  margin-top: 10px;
+}
+
+.product-details-container {
+  padding-inline: 10px;
+}
+
+.add-to-cart {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #80808075;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.quantity-control-button {
+  width: 20%;
+  text-align: center;
+  background-color: #e14d2a;
+  color: white;
+  padding-block: 14px;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.quantity-control-button:hover {
+  background-color: #cf3614;
+}
+
+.quantity-in-detail-modal {
+  text-align: center;
+  padding-top: 1px;
+}
+.quantity-main {
+  font-size: 21px;
+  font-weight: 600;
+}
+.in-bag {
+  font-size: small;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 899px) {
+  .details-container {
+    flex-direction: column;
+  }
+
+  .details {
+    padding-left: 0px;
+  }
+}

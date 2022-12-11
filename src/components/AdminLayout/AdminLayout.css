@@ -1,0 +1,26 @@
+.admin-menu-items-container {
+  margin-top: 62px;
+}
+
+.admin-menu-items-container li {
+  list-style: none;
+}
+
+.admin-menu-item a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  gap: 8px;
+  padding-inline: 20px;
+  padding-block: 10px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.admin-menu-item a:hover {
+  background-color: rgba(80, 75, 75, 0.068);
+}
+
+.active-item {
+  color: orange;
+}

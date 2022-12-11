@@ -1,0 +1,19 @@
+.page-content-container {
+  margin-top: 48px;
+  flex-grow: 1;
+  /* overflow-y: scroll; */
+}
+
+.drawer-container {
+  margin-top: 48px;
+}
+
+.left-margin {
+  margin-left: 218px;
+}
+
+@media screen and (max-width: 899px) {
+  .left-margin {
+    margin-left: 0px;
+  }
+}

@@ -1,0 +1,16 @@
+/* primary #E14D2A */
+/* Secondary #FD841F */
+
+/* Styling the swal */
+.swal2-container {
+  z-index: 2000 !important;
+}
+
+.swal2-icon {
+  margin: 1em auto 0em !important;
+}
+
+.swal2-html-container div p {
+  font-size: 1.3rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}

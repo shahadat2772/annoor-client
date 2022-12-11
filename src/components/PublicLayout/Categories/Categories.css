@@ -1,0 +1,29 @@
+.categories-container {
+  margin-top: 62px;
+}
+
+.each-single-level-category a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  gap: 8px;
+  padding-inline: 10px;
+  padding-block: 10px;
+}
+
+.active-category {
+  color: orange;
+}
+
+.each-single-level-category a:hover {
+  background-color: rgba(80, 75, 75, 0.068);
+}
+
+.category-title {
+  flex-grow: 1;
+}
+
+.active-category {
+  background-color: rgba(80, 75, 75, 0.068);
+}

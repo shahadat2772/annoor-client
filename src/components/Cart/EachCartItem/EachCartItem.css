@@ -1,0 +1,96 @@
+.each-cart-items-img {
+  width: 60px;
+  height: 60px;
+}
+
+.each-cart-item-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-inline: 10px;
+  padding-block: 10px;
+}
+.name-and-unit-price {
+  /* flex-grow: 1; */
+}
+
+.quantity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 5px; */
+}
+
+.close-button {
+  color: gray;
+  padding: 5px;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #e14d2a;
+}
+
+.quantity-update-button {
+  color: gray;
+  padding-inline: 5px;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.quantity-update-button:hover {
+  color: #e14d2a;
+}
+
+.name-and-img {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.total {
+  display: flex;
+  align-items: center;
+  min-width: 85px;
+}
+
+.total-amount {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.taka-icon-in-cart-item {
+  width: 15px;
+  /* margin-bottom: 0px; */
+  margin-top: 2px;
+  margin-right: -2px;
+}
+
+.price-per-unit {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.taka-icon-in-unit-price {
+  width: 12px;
+  margin-top: 4px;
+  margin-right: -2px;
+}
+
+.item-quantity {
+  background-color: rgba(255, 153, 0, 0.3);
+  width: 100%;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.each-cart-item-container {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.356);
+}
+
+@media screen and (max-width: 900px) {
+}

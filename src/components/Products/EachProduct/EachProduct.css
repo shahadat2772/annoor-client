@@ -1,0 +1,118 @@
+.add-to-bag-button {
+  background-color: transparent;
+  border: 0;
+  color: #e14d2a;
+  font-weight: 500;
+  width: 100%;
+  padding: 6px 7px;
+  cursor: pointer;
+  font-weight: 600;
+  border: 1px solid #87817f33;
+  transition: all 0.3s;
+  margin-top: 5px;
+}
+
+.product-name {
+  height: 60px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-top: 5px;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+.product-name:hover {
+  text-decoration: underline;
+}
+
+.add-to-bag-button:hover {
+  background-color: #e14c2a1c;
+}
+
+.each-product-img {
+  width: 100%;
+}
+
+.sub-text {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 4px;
+  cursor: default;
+}
+
+.taka-icon {
+  width: 18px;
+  margin-top: 3px;
+  margin-right: -2px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  font-weight: 500;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 18px;
+  padding-bottom: 5px;
+  cursor: default;
+}
+
+.each-product-container {
+  width: 200px;
+  padding: 5px;
+  /* background-color: white; */
+}
+.each-product-container:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.each-product-container {
+  width: 200px;
+  padding: 5px;
+}
+
+.each-products-upper-part {
+  /* cursor: pointer; */
+}
+
+.inc-and-dec-action {
+  display: flex;
+  border: 1px solid #8080804d;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+  background-color: #e14c2a1c;
+  border: 1px solid #87817f33;
+  color: #e14d2a;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.quantity-in-bag {
+  padding-bottom: 3px;
+}
+
+.inc-and-dec-action-button {
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.inc-and-dec-action > :first-child {
+  border-right: 1px solid #87817f33;
+}
+.inc-and-dec-action > :last-child {
+  border-left: 1px solid #87817f33;
+}
+.quantity-in-bag {
+  cursor: default;
+}
+
+@media screen and (max-width: 600px) {
+  .each-product-container {
+    width: 168px;
+  }
+}
