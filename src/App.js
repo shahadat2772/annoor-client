@@ -12,33 +12,35 @@ import RequireAdmin from "./components/Authentication/RequireAdmin";
 import AddProduct from "./components/AddProduct/AddProduct";
 import ManageProduct from "./components/ManageProduct/ManageProduct";
 import EditProduct from "./components/EditProduct/EditProduct";
-import { useContext } from "react";
-import { AuthContext } from "./context/AuthContext";
+import MyOrders from "./components/MyOrders/MyOrders";
+import AllOrders from "./components/AllOrders/AllOrders";
 
 function App() {
-  const { userInfoLoading } = useContext(AuthContext);
-
   return (
     <div className="App">
       <Routes>
-        {/* Routes for mango people */}
+        {/* -----------PUBLIC ROUTE----------- */}
         <Route path="/" element={<PublicLayout />}>
           <Route index element={<Products />} />
           <Route path="/:category" element={<Products />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/signIn" element={<SignIn />} />
+
+          {/* ---------AUTHORIZED ROUTES--------- */}
           <Route element={<RequireAuth />}>
             <Route path="/profile" element={<Profile />} />
+            <Route path="/orders" element={<MyOrders />} />
           </Route>
-          <Route path="/signIn" element={<SignIn />} />
         </Route>
 
-        {/* Routes for admin shaheb */}
+        {/* --------------ADMIN ROUTES---------------- */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route element={<RequireAdmin />}>
             <Route index element={<ManageProduct />} />
             <Route path="/admin/manage-product" element={<ManageProduct />} />
             <Route path="/admin/add-product" element={<AddProduct />} />
             <Route path="/admin/edit-product/:_id" element={<EditProduct />} />
+            <Route path="/admin/orders" element={<AllOrders />} />
           </Route>
         </Route>
       </Routes>

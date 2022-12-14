@@ -43,7 +43,7 @@ const AddProduct = () => {
     formData.append("stock", stock);
     formData.append("description", description);
 
-    fetch("https://annoor-server-production-af32.up.railway.app/product", {
+    fetch("http://localhost:5000/product", {
       method: "POST",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

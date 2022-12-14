@@ -8,8 +8,8 @@ import TakeoutDiningOutlinedIcon from "@mui/icons-material/TakeoutDiningOutlined
 export const categories = [
   {
     icon: <EggOutlinedIcon />,
-    title: "Food",
-    to: "/food",
+    title: "Snacks",
+    to: "/snacks",
   },
   {
     icon: <LocalGroceryStoreOutlinedIcon />,

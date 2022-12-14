@@ -18,7 +18,9 @@ const AnnoorContextProvider = ({ children }) => {
           : item
       );
     } else {
-      const item = { ...product, quantity: 1 };
+      let item = { ...product, quantity: 1 };
+      delete item.description;
+      delete item.stock;
       newCart = [...cart, item];
     }
     setCart(newCart);

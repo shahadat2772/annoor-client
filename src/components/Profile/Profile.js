@@ -6,11 +6,11 @@ import PhoneInput from "react-phone-input-2";
 import { AuthContext } from "../../context/AuthContext";
 const Profile = () => {
   const { userInfo, fetchUserInfo, user } = useContext(AuthContext);
-  const [userName, setUserName] = useState();
-  const [userGender, setUserGender] = useState();
-  const [userDateOfBirth, setUserDateOfBirth] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [address, setAddress] = useState();
+  const [userName, setUserName] = useState("");
+  const [userGender, setUserGender] = useState("");
+  const [userDateOfBirth, setUserDateOfBirth] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
 
   useEffect(() => {
     if (userInfo) {
@@ -31,6 +31,12 @@ const Profile = () => {
 
     if (userName === "" || userName === "") {
       return toast.error("Please enter you name.", {
+        id: "profile-update-toast",
+      });
+    }
+
+    if (!phoneNumber) {
+      return toast.error("Please enter you phone number.", {
         id: "profile-update-toast",
       });
     }
@@ -70,18 +76,15 @@ const Profile = () => {
       address: address,
     };
 
-    fetch(
-      "https://annoor-server-production-af32.up.railway.app/update-user-info",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          uid: user.uid,
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(updatedUserInfo),
-      }
-    )
+    fetch("http://localhost:5000/update-user-info", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        uid: user.uid,
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(updatedUserInfo),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

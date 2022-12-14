@@ -16,9 +16,9 @@ const Products = () => {
 
   useEffect(() => {
     setProductLoading(true);
-    fetch(`https://annoor-server-production-af32.up.railway.app/product`, {
+    fetch(`http://localhost:5000/product`, {
       headers: {
-        category: category ? category : "food",
+        category: category ? category : "snacks",
       },
     })
       .then((res) => res.json())
@@ -47,7 +47,7 @@ const Products = () => {
               ))
             ) : (
               <div>
-                <Typography marginTop="25px" variant="h5">
+                <Typography textAlign={"center"} marginTop="152px" variant="h5">
                   No items found :(
                 </Typography>
               </div>

@@ -1,4 +1,5 @@
-import { Drawer } from "@mui/material";
+import { useTheme } from "@emotion/react";
+import { Drawer, useMediaQuery } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
@@ -16,12 +17,13 @@ const AdminLayout = () => {
     setMobileDrawerOpen(!mobileDrawerOpen);
   };
 
+  const theme = useTheme();
+  const smallDevice = useMediaQuery(theme.breakpoints.down("md"));
+
   const adminMenuItems = (
     <div className="admin-menu-items-container">
       <li
-        onClick={() =>
-          handleMobileDrawerToggle ? handleMobileDrawerToggle() : ""
-        }
+        onClick={() => (smallDevice ? handleMobileDrawerToggle() : "")}
         className="admin-menu-item"
       >
         <NavLink
@@ -32,27 +34,23 @@ const AdminLayout = () => {
         </NavLink>
       </li>
       <li
-        onClick={() =>
-          handleMobileDrawerToggle ? handleMobileDrawerToggle() : ""
-        }
+        onClick={() => (smallDevice ? handleMobileDrawerToggle() : "")}
         className="admin-menu-item"
       >
         <NavLink
-          className={({ isActive }) => (isActive ? "active-item" : "")}
+          className={({ isActive }) => (isActive ? "active-category" : "")}
           to={"/admin/add-product"}
         >
           <span className="category-title">Add Product</span>
         </NavLink>
       </li>
       <li
-        onClick={() =>
-          handleMobileDrawerToggle ? handleMobileDrawerToggle() : ""
-        }
+        onClick={() => (smallDevice ? handleMobileDrawerToggle() : "")}
         className="admin-menu-item"
       >
         <NavLink
           className={({ isActive }) => (isActive ? "active-category" : "")}
-          to={"/orders"}
+          to={"/admin/orders"}
         >
           <span className="category-title">Orders</span>
         </NavLink>

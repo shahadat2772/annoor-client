@@ -74,7 +74,7 @@ const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
               <MenuIcon />
             </IconButton>
             <Typography
-              onClick={() => navigate("/food")}
+              onClick={() => navigate("/snacks")}
               variant="h6"
               noWrap
               component="div"
@@ -198,9 +198,9 @@ const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
                 <span>Profile</span>
               </Link>
               <Divider />
-              <a className="each-menu-item">
-                <span>Orders</span>
-              </a>
+              <Link to="/orders" className="each-menu-item">
+                <span>My Orders</span>
+              </Link>
               <Divider />
 
               {userInfo?.role === "admin" && (

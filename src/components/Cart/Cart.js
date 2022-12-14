@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import { AnnoorContext } from "../../context/AnnoorContext";
 import "./Cart.css";
@@ -7,10 +7,15 @@ import EachCartItem from "./EachCartItem/EachCartItem";
 import EmptyCartImg from "../../assets/imgs/empy-cart.png";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { toast } from "react-hot-toast";
 
 const Cart = () => {
-  const { cart } = useContext(AnnoorContext);
+  const { cart, setCart } = useContext(AnnoorContext);
   const { userInfo } = useContext(AuthContext);
+  const date = new Date();
+  const formattedDate = `${
+    date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear()
+  }`;
 
   const navigate = useNavigate();
 
@@ -22,9 +27,47 @@ const Cart = () => {
   });
 
   let totalShipping = 30;
-  // let totalTax = totalPrice * 0.01;
-  // let grandTotal = totalPrice + totalTax + totalShipping;
   let grandTotal = totalPrice + totalShipping;
+
+  const placeOrder = () => {
+    if (!userInfo.address || !userInfo.phoneNumber) {
+      toast.error("Please provide the required information to proceed.");
+      navigate("/profile");
+      return;
+    }
+
+    const order = {
+      uid: userInfo.uid,
+      userName: userInfo.name,
+      address: userInfo.address,
+      phoneNumber: userInfo.phoneNumber,
+      products: cart,
+      status: "Processing",
+      payment: "Cash On Delivery",
+      total: grandTotal,
+      date: formattedDate,
+    };
+
+    fetch("http://localhost:5000/order", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        uid: userInfo?.uid,
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          setCart([]);
+          navigate("/orders");
+          toast.success("Order placed successfully.");
+        } else {
+          toast.error(result?.message);
+        }
+      });
+  };
 
   return (
     <div className="cart">
@@ -65,7 +108,11 @@ const Cart = () => {
               )}
             </div>
           </div>
-          <button disabled={cart.length === 0} className="checkout-button">
+          <button
+            onClick={() => placeOrder()}
+            disabled={cart.length === 0}
+            className="checkout-button"
+          >
             PROCEED TO CHECKOUT
           </button>
         </div>

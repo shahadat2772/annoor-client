@@ -1,4 +1,9 @@
 .manage-products-container {
+  /* margin-bottom: 20px;
+  min-height: 100vh; */
+
   margin-bottom: 20px;
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  max-width: 100vw;
+  /* overflow-x: scroll; */
 }

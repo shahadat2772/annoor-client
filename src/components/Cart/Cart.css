@@ -1,5 +1,5 @@
 .cart-header {
-  padding: 20px 0px 20px 10px;
+  padding: 16px 0px 20px 10px;
 }
 
 .cart-header span {
@@ -25,7 +25,7 @@
 .order-summery {
   /* border: 1px solid gray;  */
   width: 30%;
-  padding: 29px;
+  padding: 22px;
   background-color: rgba(255, 153, 0, 0.3);
   border-radius: 10px;
 }

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const fetcher = axios.create({
-  baseURL: "https://annoor-server-production-af32.up.railway.app/",
+  baseURL: "http://localhost:5000/",
 });
 
 export default fetcher;

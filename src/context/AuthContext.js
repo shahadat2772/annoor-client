@@ -29,7 +29,7 @@ const AnnnoorAuthContextProvider = ({ children }) => {
       userInfo = { ...userInfo, email, name };
     }
 
-    fetch("https://annoor-server-production-af32.up.railway.app/token", {
+    fetch("http://localhost:5000/token", {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(userInfo),
@@ -51,7 +51,7 @@ const AnnnoorAuthContextProvider = ({ children }) => {
 
   const fetchUserInfo = () => {
     setUserInfoLoading(true);
-    fetch("https://annoor-server-production-af32.up.railway.app/user", {
+    fetch("http://localhost:5000/user", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         uid: user.uid,

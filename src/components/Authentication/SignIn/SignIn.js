@@ -127,7 +127,7 @@ const SignIn = () => {
 
   if (token) {
     toast.success("Thank you so much!");
-    navigate("/food");
+    navigate("/snacks");
   }
 
   return (
