@@ -22,15 +22,30 @@ import { AnnoorContext } from "../../context/AnnoorContext";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.init";
 import { AuthContext } from "../../context/AuthContext";
+import { useEffect } from "react";
 
 const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const { cart } = useContext(AnnoorContext);
   const { logOut, userInfo } = useContext(AuthContext);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const [menuPopOverEl, setMenuPopOverEl] = useState(null);
   const menuPopOverOpen = Boolean(menuPopOverEl);
+
+  // Handle Search
+  const handleSearch = () => {
+    if (searchQuery === "") {
+      return navigate(`/snacks`);
+    } else {
+      return navigate(`/search/${searchQuery}`);
+    }
+  };
+
+  useEffect(() => {
+    handleSearch();
+  }, [searchQuery]);
 
   let cartItemQuantity = 0;
   cart.forEach((element) => {
@@ -90,12 +105,14 @@ const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
           <div id="center">
             <form className="search-bar-container">
               <input
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search"
                 type="text"
                 className="search-input"
               />
               <div className="search-button-container">
                 <Button
+                  onClick={handleSearch}
                   size="small"
                   sx={{
                     minWidth: 0,

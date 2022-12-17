@@ -15,6 +15,7 @@ import EditProduct from "./components/EditProduct/EditProduct";
 import MyOrders from "./components/MyOrders/MyOrders";
 import AllOrders from "./components/AllOrders/AllOrders";
 import AllUsers from "./components/AllUsers/AllUsers";
+import Search from "./components/Search/Search";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<PublicLayout />}>
           <Route index element={<Products />} />
           <Route path="/:category" element={<Products />} />
+          <Route path="/search/:searchQuery" element={<Search />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/signIn" element={<SignIn />} />
 
