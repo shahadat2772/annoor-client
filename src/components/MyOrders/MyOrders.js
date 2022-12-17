@@ -28,12 +28,15 @@ const MyOrders = () => {
 
   const fetchOrders = () => {
     setOrdersLoading(true);
-    fetch(`http://localhost:5000/orders?page=${pageNumber}`, {
-      headers: {
-        uid: userInfo.uid,
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://annoor-server-production-af32.up.railway.app/orders?page=${pageNumber}`,
+      {
+        headers: {
+          uid: userInfo.uid,
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {

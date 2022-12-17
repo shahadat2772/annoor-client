@@ -44,7 +44,7 @@ const ManageProduct = () => {
     if (userInfo) {
       setProductLoading(true);
       fetch(
-        `http://localhost:5000/all-products?page=${pageNumber}&search=${searchQuery}&filter=${filterBy}`,
+        `https://annoor-server-production-af32.up.railway.app/all-products?page=${pageNumber}&search=${searchQuery}&filter=${filterBy}`,
         {
           headers: {
             uid: userInfo.uid,
@@ -85,14 +85,17 @@ const ManageProduct = () => {
       html: "<div><p>Are you sure you wanna <br/> delete this product?</p></div>",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch("http://localhost:5000/delete-product", {
-          method: "DELETE",
-          headers: {
-            uid: userInfo.uid,
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            _id: _id,
-          },
-        })
+        fetch(
+          "https://annoor-server-production-af32.up.railway.app/delete-product",
+          {
+            method: "DELETE",
+            headers: {
+              uid: userInfo.uid,
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              _id: _id,
+            },
+          }
+        )
           .then((res) => res.json())
           .then((result) => {
             if (result.success) {

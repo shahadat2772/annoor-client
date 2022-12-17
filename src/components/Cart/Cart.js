@@ -50,7 +50,7 @@ const Cart = () => {
       date: formattedDate,
     };
 
-    fetch("http://localhost:5000/order", {
+    fetch("https://annoor-server-production-af32.up.railway.app/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",

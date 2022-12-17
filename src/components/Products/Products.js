@@ -16,7 +16,7 @@ const Products = () => {
 
   useEffect(() => {
     setProductLoading(true);
-    fetch(`http://localhost:5000/product`, {
+    fetch(`https://annoor-server-production-af32.up.railway.app/product`, {
       headers: {
         category: category ? category : "snacks",
       },

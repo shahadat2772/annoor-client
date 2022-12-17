@@ -31,13 +31,16 @@ const EditProduct = () => {
 
   useEffect(() => {
     if (_id) {
-      fetch("http://localhost:5000/single-product", {
-        headers: {
-          uid: userInfo?.uid,
-          _id: _id,
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      fetch(
+        "https://annoor-server-production-af32.up.railway.app/single-product",
+        {
+          headers: {
+            uid: userInfo?.uid,
+            _id: _id,
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((result) => {
           if (result.success) {
@@ -97,7 +100,7 @@ const EditProduct = () => {
     formData.append("stock", stock);
     formData.append("description", descriptionHtml);
 
-    fetch("http://localhost:5000/edit-product", {
+    fetch("https://annoor-server-production-af32.up.railway.app/edit-product", {
       method: "POST",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

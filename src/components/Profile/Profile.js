@@ -76,15 +76,18 @@ const Profile = () => {
       address: address,
     };
 
-    fetch("http://localhost:5000/update-user-info", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        uid: user.uid,
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(updatedUserInfo),
-    })
+    fetch(
+      "https://annoor-server-production-af32.up.railway.app/update-user-info",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          uid: user.uid,
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(updatedUserInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

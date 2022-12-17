@@ -17,7 +17,9 @@ const Search = () => {
     if (searchQuery !== "") {
       setProductLoading(true);
 
-      fetch(`http://localhost:5000/products?search=${searchQuery}`)
+      fetch(
+        `https://annoor-server-production-af32.up.railway.app/products?search=${searchQuery}`
+      )
         .then((res) => res.json())
         .then((result) => {
           if (result.success) {

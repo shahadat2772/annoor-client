@@ -50,7 +50,7 @@ const PaymentModal = ({
       transactionId: tnxId,
     };
 
-    fetch("http://localhost:5000/payment", {
+    fetch("https://annoor-server-production-af32.up.railway.app/payment", {
       method: "POST",
       headers: {
         "content-type": "application/json",

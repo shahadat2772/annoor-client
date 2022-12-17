@@ -52,7 +52,7 @@ const EachOrder = ({ fetchOrders, eachOrder }) => {
 
     console.log(updatedOrderStatus);
 
-    fetch("http://localhost:5000/order-status", {
+    fetch("https://annoor-server-production-af32.up.railway.app/order-status", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -84,14 +84,17 @@ const EachOrder = ({ fetchOrders, eachOrder }) => {
       html: "<div><p>Are you sure you wanna <br/> delete this order?</p></div>",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch("http://localhost:5000/delete-order", {
-          method: "DELETE",
-          headers: {
-            id: eachOrder.orderId,
-            uid: userInfo.uid,
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        })
+        fetch(
+          "https://annoor-server-production-af32.up.railway.app/delete-order",
+          {
+            method: "DELETE",
+            headers: {
+              id: eachOrder.orderId,
+              uid: userInfo.uid,
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        )
           .then((res) => res.json())
           .then((result) => {
             if (result.success) {

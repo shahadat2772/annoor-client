@@ -34,7 +34,7 @@ const AllUsers = () => {
     if (userInfo) {
       setUsersLoading(true);
       fetch(
-        `http://localhost:5000/all-users?page=${pageNumber}&search=${searchQuery}&filter=${filterBy}`,
+        `https://annoor-server-production-af32.up.railway.app/all-users?page=${pageNumber}&search=${searchQuery}&filter=${filterBy}`,
         {
           headers: {
             uid: userInfo.uid,
@@ -67,14 +67,17 @@ const AllUsers = () => {
       html: "<div><p>Are you sure you wanna <br/> make this user admin?</p></div>",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch("http://localhost:5000/make-admin", {
-          method: "PATCH",
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            uid: userInfo.uid,
-            id: uid,
-          },
-        })
+        fetch(
+          "https://annoor-server-production-af32.up.railway.app/make-admin",
+          {
+            method: "PATCH",
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              uid: userInfo.uid,
+              id: uid,
+            },
+          }
+        )
           .then((res) => res.json())
           .then((result) => {
             if (result.success) {
@@ -98,14 +101,17 @@ const AllUsers = () => {
       html: "<div><p>Are you sure you wanna <br/> remove this admin?</p></div>",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch("http://localhost:5000/remove-admin", {
-          method: "PATCH",
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            uid: userInfo.uid,
-            id: uid,
-          },
-        })
+        fetch(
+          "https://annoor-server-production-af32.up.railway.app/remove-admin",
+          {
+            method: "PATCH",
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              uid: userInfo.uid,
+              id: uid,
+            },
+          }
+        )
           .then((res) => res.json())
           .then((result) => {
             if (result.success) {

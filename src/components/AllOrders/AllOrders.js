@@ -26,7 +26,7 @@ const AllOrders = () => {
   const fetchOrders = () => {
     setOrdersLoading(true);
     fetch(
-      `http://localhost:5000/all-orders?page=${pageNumber}&filter=${filterBy}`,
+      `https://annoor-server-production-af32.up.railway.app/all-orders?page=${pageNumber}&filter=${filterBy}`,
       {
         headers: {
           uid: userInfo.uid,
