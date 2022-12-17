@@ -12,7 +12,7 @@ const ProductDetailsModal = ({
   productToShowDetails,
   setProductToShowDetails,
 }) => {
-  const { name, price, image, subtext, details, _id, description } =
+  const { name, price, image, subtext, details, _id, description, discount } =
     productToShowDetails;
   const { cart, addToCart, removeFromCart } = useContext(AnnoorContext);
   const productDetailsFromCart = cart.find((product) => product._id === _id);
@@ -60,14 +60,46 @@ const ProductDetailsModal = ({
               <span className="sub-text-in-product-details">{subtext}</span>
             </div>
             <div className="price-container">
-              <span>
-                <img
-                  className="taka-icon-in-product-details"
-                  src={takeIcon}
-                  alt="taka icon"
-                />
-              </span>
-              <span className="price-in-product-details">{price}</span>
+              {discount > 0 && (
+                <span className="new-discounted-price-container-in-details">
+                  <span className="discounted-price-in-details">
+                    <span>
+                      <img
+                        className="taka-icon-in-product-details"
+                        src={takeIcon}
+                        alt="taka icon"
+                      />
+                    </span>
+
+                    <span className="price-in-product-details">
+                      {price - productToShowDetails.discount}
+                    </span>
+                  </span>
+                  <span className="previous-price-in-details">
+                    <span>
+                      <img
+                        className="taka-icon-in-product-details"
+                        src={takeIcon}
+                        alt="taka icon"
+                      />
+                    </span>
+                    <span className="price-in-product-details">{price}</span>
+                  </span>
+                </span>
+              )}
+              {!discount && (
+                <span className="">
+                  <span>
+                    <img
+                      className="taka-icon-in-product-details"
+                      src={takeIcon}
+                      alt="taka icon"
+                    />
+                  </span>
+
+                  <span className="price-in-product-details">{price}</span>
+                </span>
+              )}
             </div>
             <div className="add-to-cart">
               <div

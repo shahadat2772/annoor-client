@@ -29,10 +29,9 @@ const AddProduct = () => {
     const category = e.target.category.value;
     const subtext = e.target.subtext.value;
     const price = e.target.price.value;
+    const discount = e.target.discount.value;
     const stock = e.target.stock.value;
     const description = descriptionHtml;
-
-    console.log(description);
 
     const formData = new FormData();
     formData.append("image", image);
@@ -40,6 +39,7 @@ const AddProduct = () => {
     formData.append("category", category);
     formData.append("subtext", subtext);
     formData.append("price", price);
+    formData.append("discount", discount);
     formData.append("stock", stock);
     formData.append("description", description);
 
@@ -121,6 +121,13 @@ const AddProduct = () => {
             type="number"
             placeholder="Price"
             name="price"
+          />
+          <label className="add-product-input-label">Discount</label>
+          <input
+            className="add-product-input"
+            type="number"
+            placeholder="Discount"
+            name="discount"
           />
           <label className="add-product-input-label">Stock</label>
           <input

@@ -85,6 +85,20 @@
   font-weight: 600;
 }
 
+.previous-price-in-details .price-in-product-details {
+  font-size: 22px;
+  color: gray;
+  text-decoration: line-through;
+}
+
+.previous-price-in-details {
+  margin-left: 5px;
+}
+
+.discounted-price-in-details {
+  color: red;
+}
+
 @media screen and (max-width: 899px) {
   .details-container {
     flex-direction: column;

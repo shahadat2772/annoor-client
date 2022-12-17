@@ -7,7 +7,7 @@ const EachCartItem = ({ eachCartItem }) => {
   const { addToCart, removeFromCart, deleteFromCart } =
     useContext(AnnoorContext);
 
-  const { image, name, quantity, subtext, price } = eachCartItem;
+  const { image, name, quantity, subtext, price, discount } = eachCartItem;
   return (
     <div className="each-cart-item-container">
       <div className="quantity">
@@ -35,20 +35,54 @@ const EachCartItem = ({ eachCartItem }) => {
               src={takaIcon}
               alt="taka icon"
             />{" "}
-            <span>{price}</span>/<span>{subtext}</span>
+            <span>{discount > 0 ? price - discount : price}</span>/
+            <span>{subtext}</span>
           </div>
         </div>
       </div>
 
       <div className="total">
-        <span className="total-amount">
-          <img
-            className="taka-icon-in-cart-item"
-            src={takaIcon}
-            alt="taka icon"
-          />{" "}
-          <span>{price * quantity}</span>
-        </span>
+        <div className="total-amount">
+          {!discount && (
+            <span>
+              {" "}
+              <img
+                className="taka-icon-in-cart-item"
+                src={takaIcon}
+                alt="taka icon"
+              />{" "}
+              <span>{price * quantity}</span>
+            </span>
+          )}
+
+          {discount > 0 && (
+            <div>
+              <div className="discount-price-in-cart-item">
+                {" "}
+                <img
+                  className="taka-icon-in-cart-item"
+                  src={takaIcon}
+                  alt="taka icon"
+                />{" "}
+                <span>
+                  {discount > 0
+                    ? (price - discount) * quantity
+                    : price * quantity}
+                </span>
+              </div>
+              <div className="previous-price-in-cart-item">
+                {" "}
+                <img
+                  className="taka-icon-in-cart-item"
+                  src={takaIcon}
+                  alt="taka icon"
+                />{" "}
+                <span>{price * quantity}</span>
+              </div>
+            </div>
+          )}
+        </div>
+
         <span
           onClick={() => deleteFromCart(eachCartItem)}
           className="close-button"

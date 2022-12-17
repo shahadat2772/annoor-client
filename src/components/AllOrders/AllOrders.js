@@ -19,17 +19,21 @@ const AllOrders = () => {
   const [ordersLoading, setOrdersLoading] = useState(false);
   const [orders, setOrders] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
+  const [filterBy, setFilterBy] = useState("");
   const [orderCount, setOrderCount] = useState(0);
   const pageCount = Math.ceil(orderCount / 15);
 
   const fetchOrders = () => {
     setOrdersLoading(true);
-    fetch(`http://localhost:5000/all-orders?page=${pageNumber}`, {
-      headers: {
-        uid: userInfo.uid,
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `http://localhost:5000/all-orders?page=${pageNumber}&filter=${filterBy}`,
+      {
+        headers: {
+          uid: userInfo.uid,
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
@@ -45,13 +49,29 @@ const AllOrders = () => {
 
   useEffect(() => {
     fetchOrders();
-  }, [userInfo, pageNumber]);
+  }, [userInfo, pageNumber, filterBy]);
 
   return (
     <div>
-      <div style={{ paddingBottom: "10px" }} className="cart-header">
-        <span>All Orders</span>
-      </div>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "end",
+          justifyContent: "space-between",
+          paddingInline: "5px",
+        }}
+      >
+        <div style={{ paddingBottom: "10px" }} className="cart-header">
+          <span>All Orders</span>
+        </div>
+        <select onChange={(e) => setFilterBy(e.target.value)}>
+          <option value="">Filter</option>
+          <option value="Processing">Processing</option>
+          <option value="Confirmed">Confirmed</option>
+          <option value="Delivered">Delivered</option>
+          <option value="Canceled">Canceled</option>
+        </select>
+      </Box>
 
       <div className="myOrders">
         <Box sx={{ marginInline: "auto" }}>

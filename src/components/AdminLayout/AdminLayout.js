@@ -55,6 +55,17 @@ const AdminLayout = () => {
           <span className="category-title">Orders</span>
         </NavLink>
       </li>
+      <li
+        onClick={() => (smallDevice ? handleMobileDrawerToggle() : "")}
+        className="admin-menu-item"
+      >
+        <NavLink
+          className={({ isActive }) => (isActive ? "active-category" : "")}
+          to={"/admin/users"}
+        >
+          <span className="category-title">Users</span>
+        </NavLink>
+      </li>
     </div>
   );
 

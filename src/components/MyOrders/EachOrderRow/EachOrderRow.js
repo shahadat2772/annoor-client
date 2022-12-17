@@ -94,14 +94,21 @@ const EachOrderRow = ({ eachOrder, fetchOrders }) => {
                         </TableCell>
                         <TableCell align="center">{eachProduct.name}</TableCell>
                         <TableCell align="center">
-                          {eachProduct.price} tk/
+                          {eachProduct.discount
+                            ? eachProduct.price - eachProduct.discount
+                            : eachProduct.price}{" "}
+                          tk/
                           {eachProduct.subtext}
                         </TableCell>
                         <TableCell align="center">
                           {eachProduct.quantity}pcs
                         </TableCell>
                         <TableCell align="center">
-                          {eachProduct.price * eachProduct.quantity} tk
+                          {eachProduct.discount
+                            ? (eachProduct.price - eachProduct.discount) *
+                              eachProduct.quantity
+                            : eachProduct.price * eachProduct.quantity}{" "}
+                          tk
                         </TableCell>
                       </TableRow>
                     ))}

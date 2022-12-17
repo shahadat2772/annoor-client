@@ -35,6 +35,7 @@ const ManageProduct = () => {
   const [pageNumber, setPageNumber] = useState(1);
   console.log(pageNumber, "page number");
   const [searchQuery, setSearchQuery] = useState("");
+  const [filterBy, setFilterBy] = useState("");
   const [productLoading, setProductLoading] = useState(false);
   const pageCount = Math.ceil(productCount / 15);
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ const ManageProduct = () => {
     if (userInfo) {
       setProductLoading(true);
       fetch(
-        `http://localhost:5000/all-products?page=${pageNumber}&search=${searchQuery}`,
+        `http://localhost:5000/all-products?page=${pageNumber}&search=${searchQuery}&filter=${filterBy}`,
         {
           headers: {
             uid: userInfo.uid,
@@ -68,7 +69,7 @@ const ManageProduct = () => {
 
   useEffect(() => {
     fetchAllProducts();
-  }, [userInfo, pageNumber]);
+  }, [userInfo, pageNumber, filterBy]);
 
   const handleSearch = (e) => {
     fetchAllProducts();
@@ -113,13 +114,30 @@ const ManageProduct = () => {
   return (
     <div>
       <div>
-        <div style={{ paddingBottom: "10px" }} className="cart-header">
-          <span>Manage Products</span>
-        </div>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "end",
+            justifyContent: "space-between",
+            paddingInline: "5px",
+          }}
+        >
+          <div style={{ paddingBottom: "10px" }} className="cart-header">
+            <span>Manage Products</span>
+          </div>
+          <select
+            style={{ marginBottom: "7px" }}
+            onChange={(e) => setFilterBy(e.target.value)}
+          >
+            <option value="">Filter</option>
+            <option value="Discounted">Discounted</option>
+            <option value="Stock out">Stock out</option>
+          </select>
+        </Box>
         <div className="product-manage-search-bar-container">
           <form className="search-bar-container">
             <input
-              placeholder="Search product by name"
+              placeholder="Search product by name or category"
               type="text"
               className="search-input"
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -154,6 +172,7 @@ const ManageProduct = () => {
                 <TableCell align="left">Category</TableCell>
                 <TableCell align="center">Stock</TableCell>
                 <TableCell align="center">Price</TableCell>
+                <TableCell align="center">Discount</TableCell>
                 <TableCell align="center">Action</TableCell>
               </TableRow>
             </TableHead>
@@ -177,6 +196,9 @@ const ManageProduct = () => {
                   <TableCell align="left">{eachProduct?.category}</TableCell>
                   <TableCell align="center">{eachProduct?.stock}</TableCell>
                   <TableCell align="center">{eachProduct?.price}</TableCell>
+                  <TableCell align="center">
+                    {eachProduct?.discount ? eachProduct?.discount : "--"}
+                  </TableCell>
                   <TableCell align="center">
                     <IconButton
                       onClick={() =>

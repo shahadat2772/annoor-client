@@ -22,6 +22,7 @@ const EditProduct = () => {
   const [category, setCategory] = useState("");
   const [subtext, setSubtext] = useState("");
   const [price, setPrice] = useState(0);
+  const [discount, setDiscount] = useState(0);
   const [stock, setStock] = useState(0);
   const [description, setDescription] = useState(() =>
     EditorState.createEmpty()
@@ -46,6 +47,7 @@ const EditProduct = () => {
             setCategory(product?.category);
             setSubtext(product?.subtext);
             setPrice(product?.price);
+            setDiscount(product?.discount);
             setStock(product?.stock);
             console.log(product?.description);
             const productDescriptionDraft = htmlToDraft(product?.description);
@@ -91,6 +93,7 @@ const EditProduct = () => {
     formData.append("category", category);
     formData.append("subtext", subtext);
     formData.append("price", price);
+    formData.append("discount", discount);
     formData.append("stock", stock);
     formData.append("description", descriptionHtml);
 
@@ -175,6 +178,15 @@ const EditProduct = () => {
             placeholder="Price"
             name="price"
             onChange={(e) => setPrice(e.target.value)}
+          />
+          <label className="add-product-input-label">Discount</label>
+          <input
+            value={discount}
+            className="add-product-input"
+            type="number"
+            placeholder="Discount"
+            name="discount"
+            onChange={(e) => setDiscount(e.target.value)}
           />
           <label className="add-product-input-label">Stock</label>
           <input

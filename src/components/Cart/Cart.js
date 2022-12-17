@@ -21,13 +21,15 @@ const Cart = () => {
 
   let addedItems = 0;
   let totalPrice = 0;
+  let totalDiscount = 0;
   cart.forEach((item) => {
     addedItems = addedItems + item.quantity;
     totalPrice = totalPrice + item.price * item.quantity;
+    totalDiscount = totalDiscount + item?.discount * item.quantity;
   });
 
   let totalShipping = 30;
-  let grandTotal = totalPrice + totalShipping;
+  let grandTotal = totalPrice - totalDiscount + totalShipping;
 
   const placeOrder = () => {
     if (!userInfo.address || !userInfo.phoneNumber) {
