@@ -16,7 +16,6 @@ const Search = () => {
   useEffect(() => {
     if (searchQuery !== "") {
       setProductLoading(true);
-
       fetch(
         `https://annoor-server-production-af32.up.railway.app/products?search=${searchQuery}`
       )

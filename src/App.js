@@ -37,8 +37,8 @@ function App() {
         </Route>
 
         {/* --------------ADMIN ROUTES---------------- */}
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route element={<RequireAdmin />}>
+        <Route element={<RequireAdmin />}>
+          <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<ManageProduct />} />
             <Route path="/admin/manage-product" element={<ManageProduct />} />
             <Route path="/admin/add-product" element={<AddProduct />} />

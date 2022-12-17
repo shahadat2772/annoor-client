@@ -16,7 +16,7 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { AccountCircle } from "@mui/icons-material";
 import SearchIcon from "@mui/icons-material/Search";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AnnoorContext } from "../../context/AnnoorContext";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -30,9 +30,12 @@ const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
   const { cart } = useContext(AnnoorContext);
   const { logOut, userInfo } = useContext(AuthContext);
   const [searchQuery, setSearchQuery] = useState("");
+  const location = useLocation();
+  const path = location.pathname.split("/")[1];
 
   const [menuPopOverEl, setMenuPopOverEl] = useState(null);
   const menuPopOverOpen = Boolean(menuPopOverEl);
+  const [firstTime, setFirstTime] = useState(true);
 
   // Handle Search
   const handleSearch = () => {
@@ -44,7 +47,12 @@ const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
   };
 
   useEffect(() => {
-    handleSearch();
+    if (firstTime === true) {
+      setFirstTime(false);
+      return;
+    } else {
+      handleSearch();
+    }
   }, [searchQuery]);
 
   let cartItemQuantity = 0;
@@ -102,30 +110,32 @@ const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
               Annoor Business
             </Typography>
           </div>
-          <div id="center">
-            <form className="search-bar-container">
-              <input
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search"
-                type="text"
-                className="search-input"
-              />
-              <div className="search-button-container">
-                <Button
-                  onClick={handleSearch}
-                  size="small"
-                  sx={{
-                    minWidth: 0,
-                    borderRadius: 0,
-                    backgroundColor: "transparent",
-                    height: "100%",
-                  }}
-                >
-                  <SearchIcon />
-                </Button>
-              </div>
-            </form>
-          </div>
+          {path !== "admin" && (
+            <div id="center">
+              <form className="search-bar-container">
+                <input
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search"
+                  type="text"
+                  className="search-input"
+                />
+                <div className="search-button-container">
+                  <Button
+                    onClick={handleSearch}
+                    size="small"
+                    sx={{
+                      minWidth: 0,
+                      borderRadius: 0,
+                      backgroundColor: "transparent",
+                      height: "100%",
+                    }}
+                  >
+                    <SearchIcon />
+                  </Button>
+                </div>
+              </form>
+            </div>
+          )}
           <div id="end">
             <Box
               sx={{
@@ -216,7 +226,7 @@ const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
               </Link>
               <Divider />
               <Link to="/orders" className="each-menu-item">
-                <span>My Orders</span>
+                <span>Orders</span>
               </Link>
               <Divider />
 

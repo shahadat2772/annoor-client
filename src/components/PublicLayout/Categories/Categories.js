@@ -43,10 +43,17 @@ const SingleLevelCategory = ({ category, handleMobileDrawerToggle }) => {
         className={({ isActive }) => (isActive ? "active-category" : "")}
         to={category?.to}
       >
-        {category.icon && (
+        {/* {category.icon && (
           <Icon color="primary" size="small">
             {category.icon}
           </Icon>
+        )} */}
+        {category.icon && (
+          <img
+            style={{ width: "22px", height: "22px" }}
+            src={category.icon}
+            alt=""
+          />
         )}
         <span className="category-title">{category.title}</span>
       </NavLink>
@@ -65,10 +72,17 @@ const MultiLevelCategory = ({ category, handleMobileDrawerToggle }) => {
     <>
       <li onClick={handleCategoryToggle} className="each-single-level-category">
         <NavLink to={category?.to}>
-          {category.icon && (
+          {/* {category.icon && (
             <Icon color="primary" size="small">
               {category.icon}
             </Icon>
+          )} */}
+          {category.icon && (
+            <img
+              style={{ width: "22px", height: "22px" }}
+              src={category.icon}
+              alt=""
+            />
           )}
           <span className="category-title">{category.title}</span>
           {categoryOpen ? (

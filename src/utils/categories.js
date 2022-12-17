@@ -1,39 +1,39 @@
-import EggOutlinedIcon from "@mui/icons-material/EggOutlined";
-import LocalGroceryStoreOutlinedIcon from "@mui/icons-material/LocalGroceryStoreOutlined";
-import BathtubOutlinedIcon from "@mui/icons-material/BathtubOutlined";
-import ChildCareOutlinedIcon from "@mui/icons-material/ChildCareOutlined";
-import KitchenOutlinedIcon from "@mui/icons-material/KitchenOutlined";
-import TakeoutDiningOutlinedIcon from "@mui/icons-material/TakeoutDiningOutlined";
+import grocery from "../assets/imgs/grocery.jpg";
+import personal from "../assets/imgs/personal.jpg";
+import baby from "../assets/imgs/baby.jpg";
+import frozen from "../assets/imgs/frozen.jpg";
+import candy from "../assets/imgs/candy.jpg";
+import wellFood from "../assets/imgs/wellfood.jpg";
 
 export const categories = [
   {
-    icon: <EggOutlinedIcon />,
-    title: "Snacks",
-    to: "/snacks",
-  },
-  {
-    icon: <LocalGroceryStoreOutlinedIcon />,
+    icon: grocery,
     title: "Grocery",
     to: "/grocery",
   },
   {
-    icon: <BathtubOutlinedIcon />,
+    icon: wellFood,
+    title: "Well Food",
+    to: "/well food",
+  },
+  {
+    icon: candy,
+    title: "Snacks & Candy",
+    to: "/snacks and candy",
+  },
+  {
+    icon: personal,
     title: "Personal Care",
     to: "/personal care",
   },
   {
-    icon: <ChildCareOutlinedIcon />,
+    icon: baby,
     title: "Baby care",
     to: "/baby care",
   },
   {
-    icon: <KitchenOutlinedIcon />,
+    icon: frozen,
     title: "Ice & frozen",
     to: "/ice and frozen",
-  },
-  {
-    icon: <TakeoutDiningOutlinedIcon />,
-    title: "Candy",
-    to: "/candy",
   },
 ];
