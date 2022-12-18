@@ -1,0 +1,21 @@
+.offer-container {
+  max-width: 720px;
+  margin-inline: auto;
+  margin-top: 20px;
+  padding-inline: 12px;
+}
+.offer-container input {
+  width: 100%;
+  height: 31px;
+  padding: 5px;
+}
+
+.offer-container input:focus {
+  outline: none;
+}
+
+.offer-input-and-button-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

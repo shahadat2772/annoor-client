@@ -43,11 +43,6 @@ const SingleLevelCategory = ({ category, handleMobileDrawerToggle }) => {
         className={({ isActive }) => (isActive ? "active-category" : "")}
         to={category?.to}
       >
-        {/* {category.icon && (
-          <Icon color="primary" size="small">
-            {category.icon}
-          </Icon>
-        )} */}
         {category.icon && (
           <img
             style={{ width: "22px", height: "22px" }}
@@ -72,11 +67,6 @@ const MultiLevelCategory = ({ category, handleMobileDrawerToggle }) => {
     <>
       <li onClick={handleCategoryToggle} className="each-single-level-category">
         <NavLink to={category?.to}>
-          {/* {category.icon && (
-            <Icon color="primary" size="small">
-              {category.icon}
-            </Icon>
-          )} */}
           {category.icon && (
             <img
               style={{ width: "22px", height: "22px" }}

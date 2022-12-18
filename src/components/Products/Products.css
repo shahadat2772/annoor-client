@@ -15,5 +15,17 @@
 }
 
 .category-header {
-  padding: 20px 0px 20px 10px;
+  padding: 10px 0px 20px 10px;
+}
+
+.Marquee {
+  background-color: rgba(255, 153, 0, 0.24);
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.MarqueeContent {
+  font-size: 22px;
+  max-width: fit-content;
+  white-space: nowrap;
 }

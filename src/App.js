@@ -16,6 +16,7 @@ import MyOrders from "./components/MyOrders/MyOrders";
 import AllOrders from "./components/AllOrders/AllOrders";
 import AllUsers from "./components/AllUsers/AllUsers";
 import Search from "./components/Search/Search";
+import Offer from "./components/Offer/Offer";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
             <Route path="/admin/edit-product/:_id" element={<EditProduct />} />
             <Route path="/admin/orders" element={<AllOrders />} />
             <Route path="/admin/users" element={<AllUsers />} />
+            <Route path="/admin/offer" element={<Offer />} />
           </Route>
         </Route>
       </Routes>

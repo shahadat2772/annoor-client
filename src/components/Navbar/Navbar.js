@@ -40,7 +40,7 @@ const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
   // Handle Search
   const handleSearch = () => {
     if (searchQuery === "") {
-      return navigate(`/snacks`);
+      return navigate(`/grocery`);
     } else {
       return navigate(`/search/${searchQuery}`);
     }
@@ -97,7 +97,7 @@ const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
               <MenuIcon />
             </IconButton>
             <Typography
-              onClick={() => navigate("/snacks")}
+              onClick={() => navigate("/grocery")}
               variant="h6"
               noWrap
               component="div"
