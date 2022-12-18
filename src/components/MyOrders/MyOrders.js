@@ -61,11 +61,15 @@ const MyOrders = () => {
       </div>
 
       <div className="myOrders">
-        <Box sx={{}}>
+        <div className="table-containers">
           {ordersLoading && <Loading />}
 
           {ordersLoading === false && orders?.length > 0 && (
-            <Table size="small" aria-label="collapsible table">
+            <Table
+              className="main-table"
+              size="small"
+              aria-label="collapsible table"
+            >
               <TableHead>
                 <TableRow border>
                   <TableCell align="center">Id</TableCell>
@@ -93,7 +97,7 @@ const MyOrders = () => {
               </Typography>
             </div>
           )}
-        </Box>
+        </div>
       </div>
 
       {pageCount > 1 && (

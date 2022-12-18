@@ -62,45 +62,57 @@ const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
   });
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        style={{
-          zIndex: 1251,
-          backgroundColor: "white",
-          borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
-        }}
-        elevation={0}
-      >
-        <Toolbar
-          sx={{ minHeight: "48px !important", justifyContent: "space-between" }}
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar
+          style={{
+            zIndex: 1251,
+            backgroundColor: "white",
+            borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
+          }}
+          sx={{ paddingRight: "0px !important" }}
+          elevation={0}
         >
-          <div id="start">
-            <IconButton
-              onClick={handleDrawerToggle}
-              size="large"
-              edge="start"
-              color="primary"
-              sx={{
-                display: { md: "inline-flex", xs: "none" },
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <IconButton
-              onClick={handleMobileDrawerToggle}
-              size="large"
-              edge="start"
-              color="primary"
-              sx={{
-                display: { xs: "inline-flex", md: "none" },
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <div className="annoor-logo-container">
-              <img src={annoorLogo} style={{ width: "170px" }} alt="" />
-            </div>
-            {/* <Typography
+          <Toolbar
+            sx={{
+              minHeight: "48px !important",
+              justifyContent: "space-between",
+            }}
+          >
+            <div id="start">
+              <IconButton
+                onClick={handleDrawerToggle}
+                size="large"
+                edge="start"
+                color="primary"
+                sx={{
+                  display: { md: "inline-flex", xs: "none" },
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <IconButton
+                onClick={handleMobileDrawerToggle}
+                size="large"
+                edge="start"
+                color="primary"
+                sx={{
+                  display: { xs: "inline-flex", md: "none" },
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Box
+                onClick={() => navigate("/grocery")}
+                className="annoor-logo-container"
+                sx={{
+                  display: { xs: "none", sm: "flex" },
+                  cursor: "pointer",
+                }}
+              >
+                <img src={annoorLogo} style={{ width: "170px" }} alt="" />
+              </Box>
+              {/* <Typography
               onClick={() => navigate("/grocery")}
               variant="h6"
               noWrap
@@ -113,85 +125,86 @@ const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
             >
               Annoor Business
             </Typography> */}
-          </div>
-          {path !== "admin" && (
-            <div id="center">
-              <form className="search-bar-container">
-                <input
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search"
-                  type="text"
-                  className="search-input"
-                />
-                <div className="search-button-container">
-                  <Button
-                    onClick={handleSearch}
-                    size="small"
-                    sx={{
-                      minWidth: 0,
-                      borderRadius: 0,
-                      backgroundColor: "transparent",
-                      height: "100%",
-                    }}
-                  >
-                    <SearchIcon />
-                  </Button>
-                </div>
-              </form>
             </div>
-          )}
-          <div id="end">
-            <Box
-              sx={{
-                display: { xs: "none", md: "flex" },
-                gap: "5px",
-                alignItems: "center",
-              }}
-            >
-              <Link to="/cart">
-                <IconButton size="large" color="primary">
-                  <Badge badgeContent={cartItemQuantity} color="error">
-                    <ShoppingCartOutlinedIcon />
+            {path !== "admin" && (
+              <div id="center">
+                <form className="search-bar-container">
+                  <input
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search"
+                    type="text"
+                    className="search-input"
+                  />
+                  <div className="search-button-container">
+                    <Button
+                      onClick={handleSearch}
+                      size="small"
+                      sx={{
+                        minWidth: 0,
+                        borderRadius: 0,
+                        backgroundColor: "transparent",
+                        height: "100%",
+                      }}
+                    >
+                      <SearchIcon />
+                    </Button>
+                  </div>
+                </form>
+              </div>
+            )}
+            <div id="end">
+              <Box
+                sx={{
+                  display: { xs: "none", md: "flex" },
+                  gap: "5px",
+                  alignItems: "center",
+                }}
+              >
+                <Link to="/cart">
+                  <IconButton size="large" color="primary">
+                    <Badge badgeContent={cartItemQuantity} color="error">
+                      <ShoppingCartOutlinedIcon />
+                    </Badge>
+                  </IconButton>
+                </Link>
+                {user ? (
+                  <>
+                    <IconButton
+                      onClick={(e) => setMenuPopOverEl(e.currentTarget)}
+                      size="large"
+                      edge="end"
+                      color="primary"
+                    >
+                      <AccountCircle />
+                    </IconButton>
+                  </>
+                ) : (
+                  <Link to="/signIn">
+                    <Button variant="outlined" size="small">
+                      SIGN IN
+                    </Button>
+                  </Link>
+                )}
+              </Box>
+              <Box sx={{ display: { xs: "flex", md: "none" } }}>
+                <IconButton
+                  onClick={(e) => setMenuPopOverEl(e.currentTarget)}
+                  size="large"
+                  edge="end"
+                  color="primary"
+                >
+                  <Badge
+                    badgeContent={!menuPopOverOpen ? cartItemQuantity : 0}
+                    color="error"
+                  >
+                    <MoreIcon />
                   </Badge>
                 </IconButton>
-              </Link>
-              {user ? (
-                <>
-                  <IconButton
-                    onClick={(e) => setMenuPopOverEl(e.currentTarget)}
-                    size="large"
-                    edge="end"
-                    color="primary"
-                  >
-                    <AccountCircle />
-                  </IconButton>
-                </>
-              ) : (
-                <Link to="/signIn">
-                  <Button variant="outlined" size="small">
-                    SIGN IN
-                  </Button>
-                </Link>
-              )}
-            </Box>
-            <Box sx={{ display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                onClick={(e) => setMenuPopOverEl(e.currentTarget)}
-                size="large"
-                edge="end"
-                color="primary"
-              >
-                <Badge
-                  badgeContent={!menuPopOverOpen ? cartItemQuantity : 0}
-                  color="error"
-                >
-                  <MoreIcon />
-                </Badge>
-              </IconButton>
-            </Box>
-          </div>
-        </Toolbar>
-      </AppBar>
+              </Box>
+            </div>
+          </Toolbar>
+        </AppBar>
+      </Box>
 
       <Popover
         elevation={1}
@@ -253,7 +266,7 @@ const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
           )}
         </Box>
       </Popover>
-    </Box>
+    </>
   );
 };
 

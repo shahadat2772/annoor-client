@@ -162,11 +162,11 @@ const ManageProduct = () => {
           </form>
         </div>
       </div>
-      <div className="manage-products-container">
+      <div className="table-containers manage-products-container">
         {productLoading && <Loading />}
         {productLoading === false && products?.length > 0 && (
           // <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} size="small" aria-label="simple table">
+          <Table className="main-table" size="small" aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell align="left">Sl.</TableCell>
@@ -203,24 +203,26 @@ const ManageProduct = () => {
                     {eachProduct?.discount ? eachProduct?.discount : "--"}
                   </TableCell>
                   <TableCell align="center">
-                    <IconButton
-                      onClick={() =>
-                        navigate(`/admin/edit-product/${eachProduct._id}`)
-                      }
-                      color="primary"
-                      sx={{ marginRight: "8px", cursor: "pointer" }}
-                      size="small"
-                    >
-                      <EditIcon fontSize="small" />
-                    </IconButton>
-                    <IconButton
-                      color="primary"
-                      sx={{ marginLeft: "8px", cursor: "pointer" }}
-                      size="small"
-                      onClick={() => deleteProduct(eachProduct._id)}
-                    >
-                      <DeleteForeverIcon fontSize="small" />
-                    </IconButton>
+                    <Box sx={{ display: "flex", gap: "5px" }}>
+                      <IconButton
+                        onClick={() =>
+                          navigate(`/admin/edit-product/${eachProduct._id}`)
+                        }
+                        color="primary"
+                        sx={{ cursor: "pointer" }}
+                        size="small"
+                      >
+                        <EditIcon fontSize="small" />
+                      </IconButton>
+                      <IconButton
+                        color="primary"
+                        sx={{ cursor: "pointer" }}
+                        size="small"
+                        onClick={() => deleteProduct(eachProduct._id)}
+                      >
+                        <DeleteForeverIcon fontSize="small" />
+                      </IconButton>
+                    </Box>
                   </TableCell>
                 </TableRow>
               ))}

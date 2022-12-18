@@ -29,7 +29,8 @@ const Cart = () => {
   });
 
   let totalShipping = 30;
-  let grandTotal = totalPrice - totalDiscount + totalShipping;
+  totalPrice = totalPrice - totalDiscount;
+  let grandTotal = totalPrice + totalShipping;
 
   const placeOrder = () => {
     if (!userInfo.address || !userInfo.phoneNumber) {

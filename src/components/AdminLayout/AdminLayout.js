@@ -28,6 +28,17 @@ const AdminLayout = () => {
       >
         <NavLink
           className={({ isActive }) => (isActive ? "active-category" : "")}
+          to={"/admin/orders"}
+        >
+          <span className="category-title">Orders</span>
+        </NavLink>
+      </li>
+      <li
+        onClick={() => (smallDevice ? handleMobileDrawerToggle() : "")}
+        className="admin-menu-item"
+      >
+        <NavLink
+          className={({ isActive }) => (isActive ? "active-category" : "")}
           to={"/admin/manage-product"}
         >
           <span className="category-title">Manage Products</span>
@@ -42,17 +53,6 @@ const AdminLayout = () => {
           to={"/admin/add-product"}
         >
           <span className="category-title">Add Product</span>
-        </NavLink>
-      </li>
-      <li
-        onClick={() => (smallDevice ? handleMobileDrawerToggle() : "")}
-        className="admin-menu-item"
-      >
-        <NavLink
-          className={({ isActive }) => (isActive ? "active-category" : "")}
-          to={"/admin/orders"}
-        >
-          <span className="category-title">Orders</span>
         </NavLink>
       </li>
       <li

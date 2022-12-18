@@ -74,11 +74,15 @@ const AllOrders = () => {
       </Box>
 
       <div className="myOrders">
-        <Box sx={{ marginInline: "auto" }}>
+        <Box className="table-containers">
           {ordersLoading && <Loading />}
 
           {ordersLoading === false && orders?.length > 0 && (
-            <Table size="small" aria-label="collapsible table">
+            <Table
+              className="main-table"
+              size="small"
+              aria-label="collapsible table"
+            >
               <TableHead>
                 <TableRow border>
                   <TableCell align="center">Date</TableCell>

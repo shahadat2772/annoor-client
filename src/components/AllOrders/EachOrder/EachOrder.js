@@ -135,23 +135,24 @@ const EachOrder = ({ fetchOrders, eachOrder }) => {
         <TableCell align="center">{eachOrder?.total} tk</TableCell>
         <TableCell align="center">{eachOrder?.payment}</TableCell>
         <TableCell align="center">
-          <IconButton
-            aria-label="expand row"
-            color="primary"
-            size="small"
-            onClick={() => setOpen(!open)}
-            sx={{ marginRight: "7px" }}
-          >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
-          <IconButton
-            aria-label="expand row"
-            color="primary"
-            size="small"
-            onClick={() => deleteOrder()}
-          >
-            <DeleteIcon />
-          </IconButton>
+          <Box sx={{ display: "flex", gap: "5px" }}>
+            <IconButton
+              aria-label="expand row"
+              color="primary"
+              size="small"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            </IconButton>
+            <IconButton
+              aria-label="expand row"
+              color="primary"
+              size="small"
+              onClick={() => deleteOrder()}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </Box>
         </TableCell>
       </TableRow>
       <TableRow>
