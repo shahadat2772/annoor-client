@@ -1,5 +1,8 @@
 .categories-container {
   margin-top: 62px;
+  min-height: calc(100vh - 217px + 60px);
+}
+.category-parent {
 }
 
 .each-single-level-category a {
@@ -22,6 +25,11 @@
 
 .category-title {
   flex-grow: 1;
+}
+
+.shop-address-container {
+  padding-top: 15px;
+  padding: 5px;
 }
 
 .active-category {

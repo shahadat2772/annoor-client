@@ -8,15 +8,23 @@ import { Link, NavLink } from "react-router-dom";
 
 const Categories = ({ handleMobileDrawerToggle }) => {
   return (
-    <ul className="categories-container">
-      {categories.map((category, key) => (
-        <EachCategory
-          handleMobileDrawerToggle={handleMobileDrawerToggle}
-          key={key}
-          category={category}
-        />
-      ))}
-    </ul>
+    <div className="category-parent">
+      <ul className="categories-container">
+        {categories.map((category, key) => (
+          <EachCategory
+            handleMobileDrawerToggle={handleMobileDrawerToggle}
+            key={key}
+            category={category}
+          />
+        ))}
+      </ul>
+      <div className="shop-address-container">
+        <p>
+          <i style={{ color: "#E14D2A" }} class="fa-solid fa-map-location"></i>{" "}
+          1772, Boithakhali, East Badda, Badda, Dhaka-1212, Bangladesh
+        </p>
+      </div>
+    </div>
   );
 };
 export default Categories;

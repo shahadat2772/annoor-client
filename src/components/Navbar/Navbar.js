@@ -23,6 +23,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.init";
 import { AuthContext } from "../../context/AuthContext";
 import { useEffect } from "react";
+import annoorLogo from "../../assets/logo/annoor-logo.png";
 
 const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
   const [user] = useAuthState(auth);
@@ -96,7 +97,10 @@ const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
             >
               <MenuIcon />
             </IconButton>
-            <Typography
+            <div className="annoor-logo-container">
+              <img src={annoorLogo} style={{ width: "170px" }} alt="" />
+            </div>
+            {/* <Typography
               onClick={() => navigate("/grocery")}
               variant="h6"
               noWrap
@@ -108,7 +112,7 @@ const Navbar = ({ handleDrawerToggle, handleMobileDrawerToggle }) => {
               }}
             >
               Annoor Business
-            </Typography>
+            </Typography> */}
           </div>
           {path !== "admin" && (
             <div id="center">
